@@ -1,19 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Desenvolvedor Cadastra</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="main.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desenvolvedor Cadastra</title>
-  <link rel="stylesheet" href="main.css" />
-</head>
+	<body>
+		<header class="header">
+			<img
+				src="img/cadastra_logo.png"
+				alt="Cadastra logo"
+				class="header__cart-button"
+			/>
 
-<body>
+			<button class="header__cart-button">
+				<img src="img/shopping_bag.png" alt="Shopping bag icon" />
 
-</body>
-<h1>Desafio Cadastra</h1>
+				<span class="header__item-counter"> 1 </span>
+			</button>
+		</header>
 
-<script src="bundle.js"></script>
+		<main class="main-content">
+			<h1 class="main-content__title">Blusas</h1>
 
+			<div class="filters-container">
+				<button class="filters-container__button">Filtrar</button>
+				<button class="filters-container__button">Ordenar</button>
+			</div>
+
+			<section class="products-container">
+				<div class="product-card">
+					<img
+						src="img/img_2.png"
+						alt="Mulher usando camiseta mescla"
+						class="product-card__banner"
+					/>
+
+					<span class="product-card__title">camiseta mescla</span>
+
+					<div>
+						<strong class="product-card__price">R$ 28,00</strong>
+						<sub class="product-card__installments">até 3x de R$ 9,33</sub>
+					</div>
+
+					<button class="product-card__buy-button">comprar</button>
+				</div>
+
+				<div class="product-card">
+					<img
+						src="img/img_3.png"
+						alt="Mulher usando saia em couro"
+						class="product-card__banner"
+					/>
+
+					<span class="product-card__title">saia em couro</span>
+
+					<div>
+						<strong class="product-card__price">R$ 398,00</strong>
+						<sub class="product-card__installments">até 10x de R$ 39,80</sub>
+					</div>
+
+					<button class="product-card__buy-button">comprar</button>
+				</div>
+
+				<div class="product-card">
+					<img
+						src="img/img_4.png"
+						alt="Mulher usando cardigan tigre"
+						class="product-card__banner"
+					/>
+
+					<span class="product-card__title">cardigan tigre</span>
+
+					<div>
+						<strong class="product-card__price">R$ 398,00</strong>
+						<sub class="product-card__installments">até 10x de R$ 39,80</sub>
+					</div>
+
+					<button class="product-card__buy-button">comprar</button>
+				</div>
+
+				<div class="product-card">
+					<img
+						src="img/img_5.png"
+						alt="Mulher usando cardigan off white"
+						class="product-card__banner"
+					/>
+
+					<span class="product-card__title">cardigan off white</span>
+
+					<div>
+						<strong class="product-card__price">R$ 99,90</strong>
+						<sub class="product-card__installments">até 3x de R$ 33,30</sub>
+					</div>
+
+					<button class="product-card__buy-button">comprar</button>
+				</div>
+			</section>
+
+			<button class="main-content__load-button">carregar mais</button>
+		</main>
+
+		<footer class="footer">
+			<p class="footer__text">CADASTRA: IMPLANTAÇÃO DE E-COMMERCE VTEX</p>
+		</footer>
+	</body>
+
+	<script src="bundle.js"></script>
 </html>

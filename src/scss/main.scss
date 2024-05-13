@@ -1,1 +1,207 @@
-@import "reset";
+@import 'reset';
+
+$black: #000;
+$gray-1: #00000080;
+$gray-2: #666666;
+$orange: #fb953e;
+
+body {
+	width: 100%;
+	min-height: 100vh;
+	background-color: #fff;
+	font-family: 'Open Sans', sans-serif;
+
+	display: flex;
+	flex-direction: column;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #bbb;
+		border-radius: 3px;
+	}
+}
+
+.header {
+	padding: 20px 30px;
+	border-bottom: 2px solid $gray-1;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&__cart-button {
+		background-color: transparent;
+		border: none;
+		transition: opacity 0.3s;
+		opacity: 1;
+		cursor: pointer;
+		position: relative;
+
+		&:hover {
+			opacity: 0.75;
+		}
+	}
+
+	&__item-counter {
+		$size: 12px;
+
+		width: $size;
+		height: $size;
+		background: $orange;
+		border-radius: 100%;
+
+		position: absolute;
+		bottom: 1px;
+		right: 2px;
+
+		color: #fff;
+		font-size: 10px;
+		font-family: 'Roboto', sans-serif;
+	}
+}
+
+.main-content {
+	padding: 30px 20px;
+	height: 100%;
+
+	&__title {
+		margin-bottom: 15px;
+
+		color: #333;
+		font-size: 32px;
+		text-align: center;
+	}
+
+	// reaproveitar estilos desse botão para os demais
+	&__load-button {
+		margin: 30px auto 0;
+		padding: 10px;
+		max-width: 175px;
+		width: 100%;
+		background-color: $orange;
+		border: none;
+		// fazer um mixin para adicionar efeitos em botões claros e escuros
+		transition: opacity 0.3s;
+		opacity: 1;
+		cursor: pointer;
+
+		display: block;
+
+		color: #fff;
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+
+		&:hover {
+			opacity: 0.85;
+		}
+	}
+}
+
+.filters-container {
+	margin-bottom: 30px;
+	width: 100%;
+	background: rebeccapurple;
+	display: flex;
+	align-items: center;
+
+	&__button {
+		flex: 1;
+		padding: 10px;
+		background-color: #fff;
+		border: 1px solid $gray-2;
+		transition: filter 0.3s;
+		cursor: pointer;
+
+		color: $gray-2;
+		font-size: 24px;
+
+		&:hover {
+			filter: brightness(0.93);
+		}
+	}
+}
+
+.products-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-items: center;
+	gap: 15px;
+}
+
+.product-card {
+	max-width: 162px;
+	// border: 1px solid;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+
+	text-align: center;
+
+	&__banner {
+		height: 242px;
+		width: 100%;
+		object-fit: contain;
+	}
+
+	&__title {
+		color: $black;
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+
+	&__price {
+		margin-bottom: 3px;
+		display: block;
+
+		color: $black;
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	&__installments {
+		color: $gray-2;
+		font-size: 16px;
+	}
+
+	&__buy-button {
+		padding: 10px;
+		width: 100%;
+		background-color: $black;
+		border: none;
+		transition: opacity 0.3s;
+		opacity: 1;
+		cursor: pointer;
+
+		color: #fff;
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+
+		&:hover {
+			opacity: 0.85;
+		}
+	}
+}
+
+.footer {
+	margin-top: auto;
+	padding: 10px;
+	background-color: $black;
+
+	&__text {
+		color: #fff;
+		font-size: 14px;
+		font-weight: 400;
+		text-align: center;
+	}
+}

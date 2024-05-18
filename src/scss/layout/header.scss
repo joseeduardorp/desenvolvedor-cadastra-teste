@@ -1,0 +1,33 @@
+.header {
+	@extend %base-header;
+
+	&__cart-button {
+		background-color: transparent;
+		border: none;
+		transition: opacity 0.3s;
+		opacity: 1;
+		cursor: pointer;
+		position: relative;
+
+		&:hover {
+			opacity: 0.75;
+		}
+	}
+
+	&__item-counter {
+		$size: 12px;
+
+		width: $size;
+		height: $size;
+		background: $secondary-color;
+		border-radius: 100%;
+
+		position: absolute;
+		bottom: 1px;
+		right: 2px;
+
+		color: $white;
+		font-size: 10px;
+		font-family: 'Roboto', sans-serif;
+	}
+}

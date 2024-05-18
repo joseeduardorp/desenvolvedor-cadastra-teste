@@ -1,93 +1,28 @@
 @import 'reset';
 
-$black: #000;
-$gray-1: #00000080;
-$gray-2: #666666;
-$orange: #fb953e;
+@import 'utils/variables';
+@import 'utils/placeholders';
+@import 'utils/mixins';
 
-%base-header {
-	padding: 20px 30px;
-	border-bottom: 2px solid $gray-1;
+@import 'layout/header';
+@import 'layout/footer';
 
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-%base-button {
-	padding: 10px;
-	width: 100%;
-	background-color: $black;
-	border: none;
-	cursor: pointer;
-
-	display: block;
-
-	color: #fff;
-	font-size: 14px;
-	font-weight: 700;
-	text-transform: uppercase;
-}
-
-%custom-scrollbar {
-	&::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	&::-webkit-scrollbar-track {
-		background-color: transparent;
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background-color: #bbb;
-		border-radius: 3px;
-	}
-}
+@import 'components/product-card';
+@import 'components/base-modal';
+@import 'components/order-modal-content';
+@import 'components/dropdown';
+@import 'components/filter-modal-content';
 
 body {
 	width: 100%;
 	min-height: 100vh;
-	background-color: #fff;
+	background-color: $white;
 	font-family: 'Open Sans', sans-serif;
 
 	display: flex;
 	flex-direction: column;
 
 	@extend %custom-scrollbar;
-}
-
-.header {
-	@extend %base-header;
-
-	&__cart-button {
-		background-color: transparent;
-		border: none;
-		transition: opacity 0.3s;
-		opacity: 1;
-		cursor: pointer;
-		position: relative;
-
-		&:hover {
-			opacity: 0.75;
-		}
-	}
-
-	&__item-counter {
-		$size: 12px;
-
-		width: $size;
-		height: $size;
-		background: $orange;
-		border-radius: 100%;
-
-		position: absolute;
-		bottom: 1px;
-		right: 2px;
-
-		color: #fff;
-		font-size: 10px;
-		font-family: 'Roboto', sans-serif;
-	}
 }
 
 .main-content {
@@ -107,7 +42,7 @@ body {
 
 		margin: 30px auto 0;
 		max-width: 175px;
-		background-color: $orange;
+		background-color: $secondary-color;
 		transition: opacity 0.3s;
 		opacity: 1;
 
@@ -117,22 +52,21 @@ body {
 	}
 }
 
-.filters-container {
+.filter-buttons {
 	margin-bottom: 30px;
 	width: 100%;
-	background: rebeccapurple;
-	display: flex;
-	align-items: center;
+
+	@include flex-center(unset);
 
 	&__button {
 		flex: 1;
 		padding: 10px;
-		background-color: #fff;
-		border: 1px solid $gray-2;
+		background-color: $white;
+		border: 1px solid $gray;
 		transition: filter 0.3s;
 		cursor: pointer;
 
-		color: $gray-2;
+		color: $gray;
 		font-size: 24px;
 
 		&:hover {
@@ -146,303 +80,4 @@ body {
 	grid-template-columns: repeat(2, 1fr);
 	justify-items: center;
 	gap: 15px;
-}
-
-.product-card {
-	max-width: 162px;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 12px;
-
-	text-align: center;
-
-	&__banner {
-		height: 242px;
-		width: 100%;
-		object-fit: contain;
-	}
-
-	&__title {
-		color: $black;
-		font-size: 14px;
-		text-transform: uppercase;
-	}
-
-	&__price {
-		margin-bottom: 3px;
-		display: block;
-
-		color: $black;
-		font-size: 16px;
-		font-weight: 700;
-	}
-
-	&__installments {
-		color: $gray-2;
-		font-size: 16px;
-	}
-
-	&__buy-button {
-		@extend %base-button;
-
-		transition: opacity 0.3s;
-		opacity: 1;
-
-		&:hover {
-			opacity: 0.85;
-		}
-	}
-}
-
-.footer {
-	margin-top: auto;
-	padding: 10px;
-	background-color: $black;
-
-	&__text {
-		color: #fff;
-		font-size: 14px;
-		font-weight: 400;
-		text-align: center;
-	}
-}
-
-.modal {
-	$full: 100%;
-	$padding: 20px 15px;
-
-	margin: 0;
-	padding: 0;
-	width: $full;
-	height: $full;
-	max-width: $full;
-	max-height: $full;
-	border: 0;
-
-	&[open] {
-		display: flex;
-		flex-direction: column;
-	}
-
-	&__header {
-		@extend %base-header;
-
-		padding: $padding;
-		border-bottom: 1px solid $black;
-	}
-
-	&__title {
-		color: $gray-2;
-		font-size: 28px;
-		text-transform: uppercase;
-	}
-
-	&__close-button {
-		$size: 25px;
-
-		width: $size;
-		height: $size;
-		background: transparent;
-		border: none;
-		transition: opacity 0.3s;
-		cursor: pointer;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-
-		&::before,
-		&::after {
-			content: '';
-			width: $size;
-			height: 1px;
-			background: $black;
-
-			position: absolute;
-			transform: rotate(45deg);
-		}
-
-		&::after {
-			transform: rotate(-45deg);
-		}
-
-		&:hover {
-			opacity: 0.85;
-		}
-	}
-
-	&__content {
-		margin-top: 10px;
-		padding: $padding;
-		height: $full;
-		overflow-y: auto;
-
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 30px;
-
-		@extend %custom-scrollbar;
-	}
-}
-
-// order modal content
-.order-button {
-	background: transparent;
-	border: none;
-	display: block;
-	transition: opacity 0.3s;
-	cursor: pointer;
-
-	font-size: 22px;
-
-	&:hover {
-		opacity: 0.75;
-	}
-}
-
-// filter modal content
-.dropdown {
-	width: 100%;
-
-	&__label {
-		padding: 5px 0;
-		display: block;
-		list-style: none;
-		user-select: none;
-		cursor: pointer;
-
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		color: $gray-2;
-		font-size: 24px;
-		text-transform: uppercase;
-
-		&::after {
-			content: '';
-			margin-right: 10px;
-			width: 14px;
-			height: 14px;
-			border: 1px solid $gray-2;
-			border-top: none;
-			border-left: none;
-
-			display: block;
-
-			transform: rotate(45deg) translateY(-7px);
-		}
-	}
-
-	&[open] &__label {
-		margin-bottom: 20px;
-
-		&::after {
-			margin-right: 0;
-
-			transform: rotate(225deg) translateY(-7px);
-		}
-	}
-}
-
-.filter-item {
-	margin-bottom: 15px;
-
-	&:last-child {
-		margin: 0;
-	}
-
-	&__label {
-		user-select: none;
-		display: flex;
-		align-items: center;
-		gap: 5px;
-
-		color: $black;
-		font-size: 14px;
-	}
-
-	&__checkbox {
-		width: 16px;
-		height: 16px;
-		border: 1px solid $gray-1;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		input[type='checkbox']:checked + &::after {
-			content: '';
-			width: 10px;
-			height: 10px;
-			background-color: $orange;
-			display: block;
-		}
-	}
-}
-
-.sizes-wrapper {
-	width: fit-content;
-
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 10px;
-
-	&__box {
-		width: 32px;
-		height: 32px;
-		border: 1px solid $gray-1;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		color: $gray-1;
-		font-size: 16px;
-
-		input[type='checkbox']:checked + & {
-			border-color: $orange;
-			color: $black;
-		}
-	}
-}
-
-.buttons-wrapper {
-	margin-top: auto;
-	width: 100%;
-	display: flex;
-	gap: 20px;
-
-	&__apply-button {
-		@extend %base-button;
-
-		background-color: $orange;
-		transition: opacity 0.3s;
-		opacity: 1;
-
-		font-weight: 400;
-
-		&:hover {
-			opacity: 0.75;
-		}
-	}
-
-	&__reset-button {
-		@extend %base-button;
-
-		background-color: #fff;
-		border: 1px solid $black;
-		transition: filter 0.3s;
-
-		color: $black;
-		font-weight: 400;
-
-		&:hover {
-			filter: brightness(0.93);
-		}
-	}
 }

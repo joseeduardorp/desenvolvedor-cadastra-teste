@@ -1,0 +1,94 @@
+.filter-item {
+	margin-bottom: 15px;
+
+	&:last-child {
+		margin: 0;
+	}
+
+	&__label {
+		user-select: none;
+
+		@include flex-center(unset);
+		gap: 5px;
+
+		color: $primary-color;
+		font-size: 14px;
+	}
+
+	&__checkbox {
+		width: 16px;
+		height: 16px;
+		border: 1px solid $light-gray;
+
+		@include flex-center;
+
+		input[type='checkbox']:checked + &::after {
+			content: '';
+			width: 10px;
+			height: 10px;
+			background-color: $secondary-color;
+			display: block;
+		}
+	}
+}
+
+.sizes-wrapper {
+	width: fit-content;
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+
+	&__box {
+		width: 32px;
+		height: 32px;
+		border: 1px solid $light-gray;
+
+		@include flex-center;
+
+		color: $light-gray;
+		font-size: 16px;
+
+		input[type='checkbox']:checked + & {
+			border-color: $secondary-color;
+			color: $primary-color;
+		}
+	}
+}
+
+.buttons-wrapper {
+	margin-top: auto;
+	width: 100%;
+
+	display: flex;
+	gap: 20px;
+
+	&__apply-button {
+		@extend %base-button;
+
+		background-color: $secondary-color;
+		transition: opacity 0.3s;
+		opacity: 1;
+
+		font-weight: 400;
+
+		&:hover {
+			opacity: 0.75;
+		}
+	}
+
+	&__reset-button {
+		@extend %base-button;
+
+		background-color: $white;
+		border: 1px solid $primary-color;
+		transition: filter 0.3s;
+
+		color: $primary-color;
+		font-weight: 400;
+
+		&:hover {
+			filter: brightness(0.93);
+		}
+	}
+}

@@ -32,9 +32,9 @@
 		<main class="main-content">
 			<h1 class="main-content__title">Blusas</h1>
 
-			<div class="filters-container">
-				<button class="filters-container__button filter">Filtrar</button>
-				<button class="filters-container__button order">Ordenar</button>
+			<div class="filter-buttons">
+				<button class="filter-buttons__button filter">Filtrar</button>
+				<button class="filter-buttons__button order">Ordenar</button>
 			</div>
 
 			<section class="products-container">
@@ -240,7 +240,7 @@
 	<script>
 		const filterModal = document.querySelector('#filter-modal');
 		const showFilterBtn = document.querySelector(
-			'.filters-container__button.filter'
+			'.filter-buttons__button.filter'
 		);
 		const closeFilterBtn = document.querySelector(
 			'.modal__close-button.filter'
@@ -258,7 +258,7 @@
 
 		const orderModal = document.querySelector('#order-modal');
 		const showOrderBtn = document.querySelector(
-			'.filters-container__button.order'
+			'.filter-buttons__button.order'
 		);
 		const closeOrderBtn = document.querySelector('.modal__close-button.order');
 

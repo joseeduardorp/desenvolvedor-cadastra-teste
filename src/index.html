@@ -33,7 +33,7 @@
 			<h1 class="main-content__title">Blusas</h1>
 
 			<div class="filters-container">
-				<button class="filters-container__button">Filtrar</button>
+				<button class="filters-container__button filter">Filtrar</button>
 				<button class="filters-container__button order">Ordenar</button>
 			</div>
 
@@ -114,6 +114,112 @@
 			<p class="footer__text">CADASTRA: IMPLANTAÇÃO DE E-COMMERCE VTEX</p>
 		</footer>
 
+		<dialog id="filter-modal" class="modal">
+			<div class="modal__header">
+				<strong class="modal__title">Filtrar</strong>
+
+				<button class="modal__close-button filter"></button>
+			</div>
+
+			<div class="modal__content">
+				<details class="dropdown">
+					<summary class="dropdown__label">Cores</summary>
+
+					<ul>
+						<li class="filter-item">
+							<label class="filter-item__label">
+								<input type="checkbox" />
+								<div class="filter-item__checkbox"></div>
+								<span>Amarelo</span>
+							</label>
+						</li>
+
+						<li class="filter-item">
+							<label class="filter-item__label">
+								<input type="checkbox" />
+								<div class="filter-item__checkbox"></div>
+								<span>Azul</span>
+							</label>
+						</li>
+
+						<li class="filter-item">
+							<label class="filter-item__label">
+								<input type="checkbox" />
+								<div class="filter-item__checkbox"></div>
+								<span>Branco</span>
+							</label>
+						</li>
+					</ul>
+				</details>
+
+				<details class="dropdown">
+					<summary class="dropdown__label">Tamanhos</summary>
+
+					<div class="sizes-wrapper">
+						<label>
+							<input type="checkbox" />
+							<span class="sizes-wrapper__box"> P </span>
+						</label>
+
+						<label>
+							<input type="checkbox" />
+							<span class="sizes-wrapper__box"> M </span>
+						</label>
+
+						<label>
+							<input type="checkbox" />
+							<span class="sizes-wrapper__box"> G </span>
+						</label>
+
+						<label>
+							<input type="checkbox" />
+							<span class="sizes-wrapper__box"> GG </span>
+						</label>
+
+						<label>
+							<input type="checkbox" />
+							<span class="sizes-wrapper__box"> U </span>
+						</label>
+					</div>
+				</details>
+
+				<details class="dropdown">
+					<summary class="dropdown__label">Faixa de preço</summary>
+
+					<ul>
+						<li class="filter-item">
+							<label class="filter-item__label">
+								<input type="checkbox" />
+								<div class="filter-item__checkbox"></div>
+								<span> de R$ 0,00 até R$ 50,00 </span>
+							</label>
+						</li>
+
+						<li class="filter-item">
+							<label class="filter-item__label">
+								<input type="checkbox" />
+								<div class="filter-item__checkbox"></div>
+								<span> de R$ 51,00 até R$ 150,00 </span>
+							</label>
+						</li>
+
+						<li class="filter-item">
+							<label class="filter-item__label">
+								<input type="checkbox" />
+								<div class="filter-item__checkbox"></div>
+								<span> de R$ 151,00 até R$ 300,00 </span>
+							</label>
+						</li>
+					</ul>
+				</details>
+
+				<div class="buttons-wrapper">
+					<button class="buttons-wrapper__apply-button">aplicar</button>
+					<button class="buttons-wrapper__reset-button">limpar</button>
+				</div>
+			</div>
+		</dialog>
+
 		<dialog id="order-modal" class="modal">
 			<div class="modal__header">
 				<strong class="modal__title">ordernar</strong>
@@ -132,6 +238,24 @@
 	</body>
 
 	<script>
+		const filterModal = document.querySelector('#filter-modal');
+		const showFilterBtn = document.querySelector(
+			'.filters-container__button.filter'
+		);
+		const closeFilterBtn = document.querySelector(
+			'.modal__close-button.filter'
+		);
+
+		showFilterBtn.addEventListener('click', () => {
+			filterModal.showModal();
+			document.body.style.overflow = 'hidden';
+		});
+
+		closeFilterBtn.addEventListener('click', () => {
+			filterModal.close();
+			document.body.style.overflow = 'auto';
+		});
+
 		const orderModal = document.querySelector('#order-modal');
 		const showOrderBtn = document.querySelector(
 			'.filters-container__button.order'

@@ -289,6 +289,7 @@ body {
 	}
 }
 
+// order modal content
 .order-button {
 	background: transparent;
 	border: none;
@@ -300,5 +301,148 @@ body {
 
 	&:hover {
 		opacity: 0.75;
+	}
+}
+
+// filter modal content
+.dropdown {
+	width: 100%;
+
+	&__label {
+		padding: 5px 0;
+		display: block;
+		list-style: none;
+		user-select: none;
+		cursor: pointer;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		color: $gray-2;
+		font-size: 24px;
+		text-transform: uppercase;
+
+		&::after {
+			content: '';
+			margin-right: 10px;
+			width: 14px;
+			height: 14px;
+			border: 1px solid $gray-2;
+			border-top: none;
+			border-left: none;
+
+			display: block;
+
+			transform: rotate(45deg) translateY(-7px);
+		}
+	}
+
+	&[open] &__label {
+		margin-bottom: 20px;
+
+		&::after {
+			margin-right: 0;
+
+			transform: rotate(225deg) translateY(-7px);
+		}
+	}
+}
+
+.filter-item {
+	margin-bottom: 15px;
+
+	&:last-child {
+		margin: 0;
+	}
+
+	&__label {
+		user-select: none;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+
+		color: $black;
+		font-size: 14px;
+	}
+
+	&__checkbox {
+		width: 16px;
+		height: 16px;
+		border: 1px solid $gray-1;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		input[type='checkbox']:checked + &::after {
+			content: '';
+			width: 10px;
+			height: 10px;
+			background-color: $orange;
+			display: block;
+		}
+	}
+}
+
+.sizes-wrapper {
+	width: fit-content;
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+
+	&__box {
+		width: 32px;
+		height: 32px;
+		border: 1px solid $gray-1;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		color: $gray-1;
+		font-size: 16px;
+
+		input[type='checkbox']:checked + & {
+			border-color: $orange;
+			color: $black;
+		}
+	}
+}
+
+.buttons-wrapper {
+	margin-top: auto;
+	width: 100%;
+	display: flex;
+	gap: 20px;
+
+	&__apply-button {
+		@extend %base-button;
+
+		background-color: $orange;
+		transition: opacity 0.3s;
+		opacity: 1;
+
+		font-weight: 400;
+
+		&:hover {
+			opacity: 0.75;
+		}
+	}
+
+	&__reset-button {
+		@extend %base-button;
+
+		background-color: #fff;
+		border: 1px solid $black;
+		transition: filter 0.3s;
+
+		color: $black;
+		font-weight: 400;
+
+		&:hover {
+			filter: brightness(0.93);
+		}
 	}
 }

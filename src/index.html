@@ -34,7 +34,7 @@
 
 			<div class="filters-container">
 				<button class="filters-container__button">Filtrar</button>
-				<button class="filters-container__button">Ordenar</button>
+				<button class="filters-container__button order">Ordenar</button>
 			</div>
 
 			<section class="products-container">
@@ -113,7 +113,40 @@
 		<footer class="footer">
 			<p class="footer__text">CADASTRA: IMPLANTAÇÃO DE E-COMMERCE VTEX</p>
 		</footer>
+
+		<dialog id="order-modal" class="modal">
+			<div class="modal__header">
+				<strong class="modal__title">ordernar</strong>
+
+				<button class="modal__close-button order"></button>
+			</div>
+
+			<div class="modal__content">
+				<button class="order-button order-button--selected" autofocus>
+					Mais recente
+				</button>
+				<button class="order-button">Maior preço</button>
+				<button class="order-button">Menor preço</button>
+			</div>
+		</dialog>
 	</body>
 
+	<script>
+		const orderModal = document.querySelector('#order-modal');
+		const showOrderBtn = document.querySelector(
+			'.filters-container__button.order'
+		);
+		const closeOrderBtn = document.querySelector('.modal__close-button.order');
+
+		showOrderBtn.addEventListener('click', () => {
+			orderModal.showModal();
+			document.body.style.overflow = 'hidden';
+		});
+
+		closeOrderBtn.addEventListener('click', () => {
+			orderModal.close();
+			document.body.style.overflow = 'auto';
+		});
+	</script>
 	<script src="bundle.js"></script>
 </html>

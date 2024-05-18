@@ -5,15 +5,31 @@ $gray-1: #00000080;
 $gray-2: #666666;
 $orange: #fb953e;
 
-body {
-	width: 100%;
-	min-height: 100vh;
-	background-color: #fff;
-	font-family: 'Open Sans', sans-serif;
+%base-header {
+	padding: 20px 30px;
+	border-bottom: 2px solid $gray-1;
 
 	display: flex;
-	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
 
+%base-button {
+	padding: 10px;
+	width: 100%;
+	background-color: $black;
+	border: none;
+	cursor: pointer;
+
+	display: block;
+
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+%custom-scrollbar {
 	&::-webkit-scrollbar {
 		width: 6px;
 	}
@@ -28,13 +44,20 @@ body {
 	}
 }
 
-.header {
-	padding: 20px 30px;
-	border-bottom: 2px solid $gray-1;
+body {
+	width: 100%;
+	min-height: 100vh;
+	background-color: #fff;
+	font-family: 'Open Sans', sans-serif;
 
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	flex-direction: column;
+
+	@extend %custom-scrollbar;
+}
+
+.header {
+	@extend %base-header;
 
 	&__cart-button {
 		background-color: transparent;
@@ -79,25 +102,14 @@ body {
 		text-align: center;
 	}
 
-	// reaproveitar estilos desse botão para os demais
 	&__load-button {
+		@extend %base-button;
+
 		margin: 30px auto 0;
-		padding: 10px;
 		max-width: 175px;
-		width: 100%;
 		background-color: $orange;
-		border: none;
-		// fazer um mixin para adicionar efeitos em botões claros e escuros
 		transition: opacity 0.3s;
 		opacity: 1;
-		cursor: pointer;
-
-		display: block;
-
-		color: #fff;
-		font-size: 14px;
-		font-weight: 700;
-		text-transform: uppercase;
 
 		&:hover {
 			opacity: 0.85;
@@ -138,7 +150,6 @@ body {
 
 .product-card {
 	max-width: 162px;
-	// border: 1px solid;
 
 	display: flex;
 	flex-direction: column;
@@ -174,18 +185,10 @@ body {
 	}
 
 	&__buy-button {
-		padding: 10px;
-		width: 100%;
-		background-color: $black;
-		border: none;
+		@extend %base-button;
+
 		transition: opacity 0.3s;
 		opacity: 1;
-		cursor: pointer;
-
-		color: #fff;
-		font-size: 14px;
-		font-weight: 700;
-		text-transform: uppercase;
 
 		&:hover {
 			opacity: 0.85;
@@ -203,5 +206,99 @@ body {
 		font-size: 14px;
 		font-weight: 400;
 		text-align: center;
+	}
+}
+
+.modal {
+	$full: 100%;
+	$padding: 20px 15px;
+
+	margin: 0;
+	padding: 0;
+	width: $full;
+	height: $full;
+	max-width: $full;
+	max-height: $full;
+	border: 0;
+
+	&[open] {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__header {
+		@extend %base-header;
+
+		padding: $padding;
+		border-bottom: 1px solid $black;
+	}
+
+	&__title {
+		color: $gray-2;
+		font-size: 28px;
+		text-transform: uppercase;
+	}
+
+	&__close-button {
+		$size: 25px;
+
+		width: $size;
+		height: $size;
+		background: transparent;
+		border: none;
+		transition: opacity 0.3s;
+		cursor: pointer;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+
+		&::before,
+		&::after {
+			content: '';
+			width: $size;
+			height: 1px;
+			background: $black;
+
+			position: absolute;
+			transform: rotate(45deg);
+		}
+
+		&::after {
+			transform: rotate(-45deg);
+		}
+
+		&:hover {
+			opacity: 0.85;
+		}
+	}
+
+	&__content {
+		margin-top: 10px;
+		padding: $padding;
+		height: $full;
+		overflow-y: auto;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 30px;
+
+		@extend %custom-scrollbar;
+	}
+}
+
+.order-button {
+	background: transparent;
+	border: none;
+	display: block;
+	transition: opacity 0.3s;
+	cursor: pointer;
+
+	font-size: 22px;
+
+	&:hover {
+		opacity: 0.75;
 	}
 }

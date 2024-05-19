@@ -16,201 +16,108 @@
 
 	<body>
 		<header class="header">
-			<img
-				src="img/cadastra_logo.png"
-				alt="Cadastra logo"
-				class="header__cart-button"
-			/>
+			<div class="header__limiter">
+				<img src="img/cadastra_logo.png" alt="Cadastra logo" />
 
-			<button class="header__cart-button">
-				<img src="img/shopping_bag.png" alt="Shopping bag icon" />
+				<button class="header__cart-button">
+					<img src="img/shopping_bag.png" alt="Shopping bag icon" />
 
-				<span class="header__item-counter"> 1 </span>
-			</button>
+					<span class="header__item-counter"> 1 </span>
+				</button>
+			</div>
 		</header>
 
-		<main class="main-content">
-			<h1 class="main-content__title">Blusas</h1>
+		<div class="main-limiter">
+			<!-- desktop filters -->
+			<aside class="desktop-filters">
+				<h1 class="page-title">Blusas</h1>
 
-			<div class="filter-buttons">
-				<button class="filter-buttons__button filter">Filtrar</button>
-				<button class="filter-buttons__button order">Ordenar</button>
-			</div>
+				<div>
+					<strong class="desktop-filters__title">Cores</strong>
 
-			<section class="products-container">
-				<div class="product-card">
-					<img
-						src="img/img_2.png"
-						alt="Mulher usando camiseta mescla"
-						class="product-card__banner"
-					/>
-
-					<span class="product-card__title">camiseta mescla</span>
-
-					<div>
-						<strong class="product-card__price">R$ 28,00</strong>
-						<sub class="product-card__installments">até 3x de R$ 9,33</sub>
-					</div>
-
-					<button class="product-card__buy-button">comprar</button>
+					<ul id="dt-colors-filter-list"></ul>
 				</div>
 
-				<div class="product-card">
-					<img
-						src="img/img_3.png"
-						alt="Mulher usando saia em couro"
-						class="product-card__banner"
-					/>
+				<div>
+					<strong class="desktop-filters__title">Tamanhos</strong>
 
-					<span class="product-card__title">saia em couro</span>
-
-					<div>
-						<strong class="product-card__price">R$ 398,00</strong>
-						<sub class="product-card__installments">até 10x de R$ 39,80</sub>
-					</div>
-
-					<button class="product-card__buy-button">comprar</button>
+					<div id="dt-sizes-filter-options" class="sizes-wrapper"></div>
 				</div>
 
-				<div class="product-card">
-					<img
-						src="img/img_4.png"
-						alt="Mulher usando cardigan tigre"
-						class="product-card__banner"
-					/>
+				<div>
+					<strong class="desktop-filters__title">Faixa de preço</strong>
 
-					<span class="product-card__title">cardigan tigre</span>
+					<ul id="dt-range-filter-list"></ul>
+				</div>
+			</aside>
 
-					<div>
-						<strong class="product-card__price">R$ 398,00</strong>
-						<sub class="product-card__installments">até 10x de R$ 39,80</sub>
-					</div>
+			<!-- products -->
+			<main class="main-content">
+				<h1 class="main-content__title">Blusas</h1>
 
-					<button class="product-card__buy-button">comprar</button>
+				<div class="filter-buttons">
+					<button id="show-filters" class="filter-buttons__button">
+						Filtrar
+					</button>
+					<button id="show-orders" class="filter-buttons__button">
+						Ordenar
+					</button>
 				</div>
 
-				<div class="product-card">
-					<img
-						src="img/img_5.png"
-						alt="Mulher usando cardigan off white"
-						class="product-card__banner"
-					/>
+				<section class="products-container"></section>
 
-					<span class="product-card__title">cardigan off white</span>
+				<button class="main-content__load-button">carregar mais</button>
+			</main>
 
-					<div>
-						<strong class="product-card__price">R$ 99,90</strong>
-						<sub class="product-card__installments">até 3x de R$ 33,30</sub>
-					</div>
+			<!-- desktop order selector -->
+			<details class="desktop-order-selector">
+				<summary class="desktop-order-selector__label">Ordenar por:</summary>
 
-					<button class="product-card__buy-button">comprar</button>
+				<div>
+					<button
+						class="desktop-order-selector__order-button desktop-order-selector__order-button--selected"
+					>
+						Mais recentes
+					</button>
+					<button class="desktop-order-selector__order-button">
+						Menor preço
+					</button>
+					<button class="desktop-order-selector__order-button">
+						Maior preço
+					</button>
 				</div>
-			</section>
-
-			<button class="main-content__load-button">carregar mais</button>
-		</main>
+			</details>
+		</div>
 
 		<footer class="footer">
 			<p class="footer__text">CADASTRA: IMPLANTAÇÃO DE E-COMMERCE VTEX</p>
 		</footer>
 
+		<!-- mobile filters modal -->
 		<dialog id="filter-modal" class="modal">
 			<div class="modal__header">
 				<strong class="modal__title">Filtrar</strong>
 
-				<button class="modal__close-button filter"></button>
+				<button id="close-filters" class="modal__close-button"></button>
 			</div>
 
 			<div class="modal__content">
 				<details class="dropdown">
 					<summary class="dropdown__label">Cores</summary>
 
-					<ul>
-						<li class="filter-item">
-							<label class="filter-item__label">
-								<input type="checkbox" />
-								<div class="filter-item__checkbox"></div>
-								<span>Amarelo</span>
-							</label>
-						</li>
-
-						<li class="filter-item">
-							<label class="filter-item__label">
-								<input type="checkbox" />
-								<div class="filter-item__checkbox"></div>
-								<span>Azul</span>
-							</label>
-						</li>
-
-						<li class="filter-item">
-							<label class="filter-item__label">
-								<input type="checkbox" />
-								<div class="filter-item__checkbox"></div>
-								<span>Branco</span>
-							</label>
-						</li>
-					</ul>
+					<ul id="colors-filter-list"></ul>
 				</details>
 
 				<details class="dropdown">
 					<summary class="dropdown__label">Tamanhos</summary>
 
-					<div class="sizes-wrapper">
-						<label>
-							<input type="checkbox" />
-							<span class="sizes-wrapper__box"> P </span>
-						</label>
-
-						<label>
-							<input type="checkbox" />
-							<span class="sizes-wrapper__box"> M </span>
-						</label>
-
-						<label>
-							<input type="checkbox" />
-							<span class="sizes-wrapper__box"> G </span>
-						</label>
-
-						<label>
-							<input type="checkbox" />
-							<span class="sizes-wrapper__box"> GG </span>
-						</label>
-
-						<label>
-							<input type="checkbox" />
-							<span class="sizes-wrapper__box"> U </span>
-						</label>
-					</div>
+					<div id="sizes-filter-options" class="sizes-wrapper"></div>
 				</details>
 
 				<details class="dropdown">
 					<summary class="dropdown__label">Faixa de preço</summary>
 
-					<ul>
-						<li class="filter-item">
-							<label class="filter-item__label">
-								<input type="checkbox" />
-								<div class="filter-item__checkbox"></div>
-								<span> de R$ 0,00 até R$ 50,00 </span>
-							</label>
-						</li>
-
-						<li class="filter-item">
-							<label class="filter-item__label">
-								<input type="checkbox" />
-								<div class="filter-item__checkbox"></div>
-								<span> de R$ 51,00 até R$ 150,00 </span>
-							</label>
-						</li>
-
-						<li class="filter-item">
-							<label class="filter-item__label">
-								<input type="checkbox" />
-								<div class="filter-item__checkbox"></div>
-								<span> de R$ 151,00 até R$ 300,00 </span>
-							</label>
-						</li>
-					</ul>
+					<ul id="range-filter-list"></ul>
 				</details>
 
 				<div class="buttons-wrapper">
@@ -220,11 +127,12 @@
 			</div>
 		</dialog>
 
+		<!-- mobile order modal -->
 		<dialog id="order-modal" class="modal">
 			<div class="modal__header">
 				<strong class="modal__title">ordernar</strong>
 
-				<button class="modal__close-button order"></button>
+				<button id="close-orders" class="modal__close-button"></button>
 			</div>
 
 			<div class="modal__content">
@@ -237,40 +145,5 @@
 		</dialog>
 	</body>
 
-	<script>
-		const filterModal = document.querySelector('#filter-modal');
-		const showFilterBtn = document.querySelector(
-			'.filter-buttons__button.filter'
-		);
-		const closeFilterBtn = document.querySelector(
-			'.modal__close-button.filter'
-		);
-
-		showFilterBtn.addEventListener('click', () => {
-			filterModal.showModal();
-			document.body.style.overflow = 'hidden';
-		});
-
-		closeFilterBtn.addEventListener('click', () => {
-			filterModal.close();
-			document.body.style.overflow = 'auto';
-		});
-
-		const orderModal = document.querySelector('#order-modal');
-		const showOrderBtn = document.querySelector(
-			'.filter-buttons__button.order'
-		);
-		const closeOrderBtn = document.querySelector('.modal__close-button.order');
-
-		showOrderBtn.addEventListener('click', () => {
-			orderModal.showModal();
-			document.body.style.overflow = 'hidden';
-		});
-
-		closeOrderBtn.addEventListener('click', () => {
-			orderModal.close();
-			document.body.style.overflow = 'auto';
-		});
-	</script>
 	<script src="bundle.js"></script>
 </html>

@@ -15,6 +15,7 @@ const paths = {
 	},
 	styles: {
 		src: 'src/scss/main.scss',
+		watch: 'src/scss/**/*.scss',
 	},
 	img: {
 		src: 'src/img/**/*',
@@ -93,7 +94,7 @@ const dev = () => {
 		'change',
 		browserSync.reload
 	);
-	watch(paths.styles.src, { ignoreInitial: false }, styles);
+	watch(paths.styles.watch, { ignoreInitial: false }, styles);
 	watch(paths.img.src, { ignoreInitial: false }, img);
 	watch(paths.html.src, { ignoreInitial: false }, html).on(
 		'change',

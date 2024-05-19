@@ -10,4 +10,8 @@
 	&:hover {
 		opacity: 0.75;
 	}
+
+	&--selected {
+		color: $secondary-color;
+	}
 }

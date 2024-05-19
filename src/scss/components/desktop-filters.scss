@@ -1,0 +1,17 @@
+.desktop-filters {
+	display: none;
+
+	&__title {
+		margin-bottom: 20px;
+		display: block;
+
+		color: $dark-gray;
+		font-size: 16px;
+	}
+
+	@media (min-width: 1024px) {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+}

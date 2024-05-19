@@ -75,4 +75,18 @@
 
 		@extend %custom-scrollbar;
 	}
+
+	@media (min-width: 600px) {
+		margin: auto;
+		max-width: 600px;
+		max-height: revert;
+		border: 1px solid $primary-color;
+	}
+
+	@media (min-width: 1024px) {
+		&,
+		&[open] {
+			display: none;
+		}
+	}
 }

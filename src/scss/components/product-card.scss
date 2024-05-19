@@ -43,4 +43,12 @@
 			opacity: 0.85;
 		}
 	}
+
+	@media (min-width: 600px) {
+		max-width: 195px;
+
+		&__banner {
+			height: 293px;
+		}
+	}
 }

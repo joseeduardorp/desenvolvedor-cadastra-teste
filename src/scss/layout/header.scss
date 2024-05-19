@@ -1,6 +1,14 @@
 .header {
 	@extend %base-header;
 
+	&__limiter {
+		@extend %limiter-container;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
 	&__cart-button {
 		background-color: transparent;
 		border: none;

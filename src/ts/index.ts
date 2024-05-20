@@ -8,6 +8,12 @@ type PriceRange = {
 	max?: number;
 };
 
+type CartProducts = {
+	id: string;
+	name: string;
+	price: number;
+};
+
 const serverUrl = 'http://localhost:5000';
 
 /* Elements */
@@ -53,6 +59,23 @@ const applyFilterBtn: NodeListOf<HTMLButtonElement> = document.querySelectorAll(
 const resetFilterBtn: NodeListOf<HTMLButtonElement> = document.querySelectorAll(
 	'.buttons-wrapper__reset-button'
 );
+
+// shopping cart elements
+const shopCartModal: HTMLDialogElement =
+	document.querySelector('.shopping-cart');
+const showCartModalBtn: HTMLButtonElement = document.querySelector(
+	'.header__cart-button'
+);
+const closeCartModalBtn: HTMLButtonElement = document.querySelector(
+	'.shopping-cart__close-button'
+);
+const productsCounter: HTMLSpanElement = document.querySelector(
+	'.header__item-counter'
+);
+const shopCartList: HTMLUListElement = document.querySelector(
+	'.shopping-cart__list'
+);
+const shopCartTotalValue = document.querySelector('.shopping-cart__value');
 
 /* Utils */
 function adjustLayout() {
@@ -135,9 +158,27 @@ function productCard(data: Product) {
 				até ${data.parcelamento[0]}x de ${formatPrice(data.parcelamento[1])}</sub>
       </div>
 
-      <button class="product-card__buy-button">comprar</button>
+      <button
+				data-productid="${data.id}"
+				data-productname="${data.name}"
+				data-productprice="${data.price}"
+				class="product-card__buy-button"
+			>
+				comprar
+			</button>
     </div>
   `;
+}
+
+function shoppingCartItem(data: CartProducts) {
+	return `
+		<li class="shopping-cart__item">
+			<span>
+				${data.name}
+				<b class="shopping-cart__price">${formatPrice(data.price)}</b>
+			</span>
+		</li>
+	`;
 }
 
 /* Filters data */
@@ -188,6 +229,12 @@ function setModalEvents() {
 		document.body.style.overflow = 'hidden';
 	});
 
+	showCartModalBtn.addEventListener('click', () => {
+		renderShopCartProducts();
+		shopCartModal.showModal();
+		document.body.style.overflow = 'hidden';
+	});
+
 	closeFilterBtn.addEventListener('click', () => {
 		filterModal.close();
 		document.body.style.overflow = 'auto';
@@ -195,6 +242,11 @@ function setModalEvents() {
 
 	closeOrderBtn.addEventListener('click', () => {
 		orderModal.close();
+		document.body.style.overflow = 'auto';
+	});
+
+	closeCartModalBtn.addEventListener('click', () => {
+		shopCartModal.close();
 		document.body.style.overflow = 'auto';
 	});
 }
@@ -337,10 +389,60 @@ function setFilterButtonEvents() {
 	});
 }
 
+let shoppingCartProducts: CartProducts[] = [];
+function setBuyButtonEvent() {
+	const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(
+		'.product-card__buy-button'
+	);
+
+	buttons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const productId = button.dataset.productid;
+			const productName = button.dataset.productname;
+			const productPrice = button.dataset.productprice;
+
+			shoppingCartProducts.push({
+				id: productId,
+				name: productName,
+				price: Number(productPrice),
+			});
+
+			updateTotalProductsPrice();
+		});
+	});
+}
+
+// other
 function setOtherEvents() {
 	loadMoreBtn.addEventListener('click', loadMoreProducts);
 }
 
+function updateTotalProductsPrice() {
+	const total = shoppingCartProducts
+		.map((product) => product.price)
+		.reduce((prev, cur) => prev + cur, 0);
+
+	shopCartTotalValue.innerHTML = formatPrice(total);
+	productsCounter.innerText = shoppingCartProducts.length + '';
+
+	renderShopCartProducts();
+}
+
+function setClearShopCartButtonEvent() {
+	const button: HTMLButtonElement = document.querySelector(
+		'.shopping-cart__clear-button'
+	);
+
+	button.addEventListener('click', () => {
+		shoppingCartProducts = [];
+
+		updateTotalProductsPrice();
+		shopCartModal.close();
+		document.body.style.overflow = 'auto';
+	});
+}
+
+// renders
 function renderFilterData() {
 	filterColors.forEach((value) => {
 		const item = colorFilterItem(value);
@@ -372,6 +474,18 @@ function renderProducts(products: Product[]) {
 		const item = productCard(product);
 
 		productsContainer.innerHTML += item;
+	});
+
+	setBuyButtonEvent();
+}
+
+function renderShopCartProducts() {
+	shopCartList.innerHTML = null;
+
+	shoppingCartProducts.forEach((product) => {
+		const item = shoppingCartItem(product);
+
+		shopCartList.innerHTML += item;
 	});
 }
 
@@ -469,6 +583,7 @@ function main() {
 
 	setModalEvents();
 	setSortButtonEvents();
+	setClearShopCartButtonEvent();
 	setOtherEvents();
 
 	renderFilterData();

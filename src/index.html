@@ -1,19 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Desenvolvedor Cadastra</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="main.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desenvolvedor Cadastra</title>
-  <link rel="stylesheet" href="main.css" />
-</head>
+	<body>
+		<header class="header">
+			<div class="header__limiter">
+				<img src="img/cadastra_logo.png" alt="Cadastra logo" />
 
-<body>
+				<button class="header__cart-button">
+					<img src="img/shopping_bag.png" alt="Shopping bag icon" />
 
-</body>
-<h1>Desafio Cadastra</h1>
+					<span class="header__item-counter"> 0 </span>
+				</button>
+			</div>
+		</header>
 
-<script src="bundle.js"></script>
+		<div class="main-limiter">
+			<!-- desktop filters -->
+			<aside class="desktop-filters">
+				<h1 class="page-title">Blusas</h1>
 
+				<div>
+					<strong class="desktop-filters__title">Cores</strong>
+
+					<ul id="dt-colors-filter-list"></ul>
+				</div>
+
+				<div>
+					<strong class="desktop-filters__title">Tamanhos</strong>
+
+					<div id="dt-sizes-filter-options" class="sizes-wrapper"></div>
+				</div>
+
+				<div>
+					<strong class="desktop-filters__title">Faixa de preço</strong>
+
+					<ul id="dt-range-filter-list"></ul>
+				</div>
+
+				<div class="buttons-wrapper">
+					<button class="buttons-wrapper__apply-button">aplicar</button>
+					<button class="buttons-wrapper__reset-button">limpar</button>
+				</div>
+			</aside>
+
+			<!-- products -->
+			<main class="main-content">
+				<h1 class="main-content__title">Blusas</h1>
+
+				<div class="filter-buttons">
+					<button id="show-filters" class="filter-buttons__button">
+						Filtrar
+					</button>
+					<button id="show-orders" class="filter-buttons__button">
+						Ordenar
+					</button>
+				</div>
+
+				<section class="products-container"></section>
+
+				<button class="main-content__load-button">carregar mais</button>
+			</main>
+
+			<!-- desktop order selector -->
+			<details class="desktop-order-selector">
+				<summary class="desktop-order-selector__label">Ordenar por:</summary>
+
+				<div>
+					<button
+						data-sort="recent"
+						class="desktop-order-selector__order-button desktop-order-selector__order-button--selected"
+					>
+						Mais recentes
+					</button>
+					<button
+						data-sort="lowest"
+						class="desktop-order-selector__order-button"
+					>
+						Menor preço
+					</button>
+					<button
+						data-sort="highest"
+						class="desktop-order-selector__order-button"
+					>
+						Maior preço
+					</button>
+				</div>
+			</details>
+		</div>
+
+		<!-- shop cart -->
+		<dialog class="shopping-cart">
+			<strong class="shopping-cart__title">Carrinho</strong>
+
+			<span class="shopping-cart__total">
+				Total: <b class="shopping-cart__value">R$ 00,00</b>
+			</span>
+
+			<ul class="shopping-cart__list"></ul>
+
+			<div class="shopping-cart__buttons-wrapper">
+				<button class="shopping-cart__clear-button">limpar</button>
+				<button class="shopping-cart__close-button">fechar</button>
+			</div>
+		</dialog>
+
+		<footer class="footer">
+			<p class="footer__text">CADASTRA: IMPLANTAÇÃO DE E-COMMERCE VTEX</p>
+		</footer>
+
+		<!-- mobile filters modal -->
+		<dialog id="filter-modal" class="modal">
+			<div class="modal__header">
+				<strong class="modal__title">Filtrar</strong>
+
+				<button id="close-filters" class="modal__close-button"></button>
+			</div>
+
+			<div class="modal__content">
+				<details class="dropdown">
+					<summary class="dropdown__label">Cores</summary>
+
+					<ul id="colors-filter-list"></ul>
+				</details>
+
+				<details class="dropdown">
+					<summary class="dropdown__label">Tamanhos</summary>
+
+					<div id="sizes-filter-options" class="sizes-wrapper"></div>
+				</details>
+
+				<details class="dropdown">
+					<summary class="dropdown__label">Faixa de preço</summary>
+
+					<ul id="range-filter-list"></ul>
+				</details>
+
+				<div class="buttons-wrapper">
+					<button class="buttons-wrapper__apply-button">aplicar</button>
+					<button class="buttons-wrapper__reset-button">limpar</button>
+				</div>
+			</div>
+		</dialog>
+
+		<!-- mobile order modal -->
+		<dialog id="order-modal" class="modal">
+			<div class="modal__header">
+				<strong class="modal__title">ordernar</strong>
+
+				<button id="close-orders" class="modal__close-button"></button>
+			</div>
+
+			<div class="modal__content">
+				<button
+					data-sort="recent"
+					class="order-button order-button--selected"
+					autofocus
+				>
+					Mais recente
+				</button>
+				<button data-sort="highest" class="order-button">Maior preço</button>
+				<button data-sort="lowest" class="order-button">Menor preço</button>
+			</div>
+		</dialog>
+	</body>
+
+	<script src="bundle.js"></script>
 </html>

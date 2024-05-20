@@ -1,0 +1,92 @@
+.modal {
+	$full: 100%;
+	$padding: 20px 15px;
+
+	margin: 0;
+	padding: 0;
+	width: $full;
+	height: $full;
+	max-width: $full;
+	max-height: $full;
+	border: 0;
+
+	&[open] {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__header {
+		@extend %base-header;
+
+		padding: $padding;
+		border-bottom: 1px solid $primary-color;
+	}
+
+	&__title {
+		color: $gray;
+		font-size: 28px;
+		text-transform: uppercase;
+	}
+
+	&__close-button {
+		$size: 25px;
+
+		width: $size;
+		height: $size;
+		background: transparent;
+		border: none;
+		transition: opacity 0.3s;
+		cursor: pointer;
+
+		@include flex-center;
+
+		position: relative;
+
+		&::before,
+		&::after {
+			content: '';
+			width: $size;
+			height: 1px;
+			background: $primary-color;
+
+			position: absolute;
+			transform: rotate(45deg);
+		}
+
+		&::after {
+			transform: rotate(-45deg);
+		}
+
+		&:hover {
+			opacity: 0.85;
+		}
+	}
+
+	&__content {
+		margin-top: 10px;
+		padding: $padding;
+		height: $full;
+		overflow-y: auto;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 30px;
+
+		@extend %custom-scrollbar;
+	}
+
+	@media (min-width: 600px) {
+		margin: auto;
+		max-width: 600px;
+		max-height: revert;
+		border: 1px solid $primary-color;
+	}
+
+	@media (min-width: 1024px) {
+		&,
+		&[open] {
+			display: none;
+		}
+	}
+}

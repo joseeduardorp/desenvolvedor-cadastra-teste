@@ -1,76 +1,83 @@
-# Venha ser um desenvolvedor da Cadastra
+# Desenvolvedor Cadastra
 
-Olá! Somos a Cadastra, uma Next-Gen Company que oferece soluções globais em marketing, tecnologia, estratégia de negócios, commerce, dados e analytics. Este desafio é voltado para o nosso Centro de Excelência (COE) de Commerce, especializado em implantação, migração, evolução e otimização de e-commerce.  Contamos com escritórios em 5 países, mas num formato de trabalho 100% home office.
+Uma simples página de e-commerce com funções de filtro, ordenação e gerenciamento do carrinho, desenvolvido como parte do teste técnico do processo seletivo da empresa Cadastra.
 
-Estamos em busca de Pessoas Desenvolvedoras `Front-end`, com sólidos conhecimentos em HTML, CSS e TS para projetar interfaces e entregar a melhor experiência para os consumidores visando sempre a otimização do código e agilidade no desenvolvimento.
+## Descrição
 
-## O que procuramos
+Este projeto é uma aplicação front-end de e-commerce que permite aos usuários filtrar produtos por cor, tamanho e faixa de preço, ordenar produtos por mais recentes, maior preço e menor preço, adicionar itens ao carrinho e limpar o carrinho de compras. O design é mobile first, garantindo uma ótima experiência em dispositivos móveis e responsividade para diferentes tamanhos de tela.
 
-### Requisitos Obrigatórios
+## Tecnologias Utilizadas
 
-- Html5, css3;
-- Javascript/Typescript;
-- Consumo de APIs.
-- Versionamento Git;
-- Grunt/gulp;
-- Sass/less;
-- Nodejs
-- Sites responsivos;
-- Iniciativa, criatividade e colaboração;
-- Boas práticas: reutilização de código, semântica, organização, performance.
+- HTML
+- CSS
+- TypeScript
+- Gulp
+- Webpack
 
-### Desejáveis:
+## Instalação
 
-- Experiência com algum CMS
-- Conhecimento/Experiência em Vtex
-- Nodejs
+Siga as etapas abaixo para instalar e executar o projeto localmente:
 
-----
+1. Clone o repositório:
 
-## Como se candidatar a vaga
+   ```bash
+   git clone https://github.com/joseeduardorp/desenvolvedor-cadastra-teste.git
+   cd desenvolvedor-cadastra-teste
+   ```
 
-- [Crie um fork desse projeto;](https://github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra/fork)
-- No seu fork, codifique o layout seguindo as instruções abaixo;
-- Atualize o readme com as instruções necessárias para rodar o seu código;
-- Adicione também seu e-mail de contato ao readme do projeto ( caso seu e-mail do github esteja privado )
-- envie para [vinicius.delfino@cadastra.com](mailto:vinicius.delfino@cadastra.com?subject=Vaga%20DEV%20-%20Cadastra) com cópia para [andresa.klein@cadastra.com](mailto:andresa.klein?subject=Vaga%20DEV%20-%20Cadastra)
- 
+2. Instale as dependências do projeto:
 
-**obs.**: link do projeto [github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra](https://github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra)
+   ```bash
+   npm install
+   ```
 
-### Instruções para o teste
+## Uso
 
-O layout se encontra no [figma](https://www.figma.com/file/Z5RCG3Ewzwm7XIPuhMUsBZ/Desafio-Cadastra?type=design&node-id=0%3A1&mode=design&t=A0G2fRjMSrcQjchw-1).
+Para iniciar a aplicação, execute o comando abaixo e acesse `http://localhost:3000` no seu navegador:
 
-### Dependências
+```bash
+npm start
+```
 
-O projeto possui um setup pronto no qual há a necessidade de possuir o nodejs instalado na versão 14 ou superior.
+## Funcionalidades Principais
 
-Para instalar as dependências só é preciso executar o comando: `npm install`
+- **Filtragem de Produtos:** Filtrar produtos por cor, tamanho e faixa de preço.
+- **Ordenação de Produtos:** Ordenar produtos por mais recentes, maior preço e menor preço.
+- **Gerenciamento do Carrinho:** Adicionar itens ao carrinho e limpar o carrinho de compras.
+- **Mobile First:** Design pensado primeiramente para dispositivos móveis.
+- **Responsividade:** Interface responsiva que se adapta a diferentes tamanhos de tela.
+- **Metodologia BEM:** Utilização da metodologia BEM (Block-Element-Modifier) nos códigos de estilo.
 
-O dar start no server e nos processos para desenvolvimento é necessário rodar o comando: `npm start `
+## Estrutura de Pastas
 
-Uma ver que o comando é dado ele irá levantar 2 servidores, sendo eles:
- - um para acessar o front-end que roda na porta 3000. No qual pode ser acessado pela url: http://localhost:3000
- - um para o json-server que irá export uma api com a lista de produtos que roda na porta 5000. Para acessar os produtos é na url:  http://localhost:5000/products
+Abaixo está a estrutura de pastas do projeto para ajudar na navegação e entendimento da organização do código:
 
-### Objetivo
+```txt
+desenvolvedor-cadastra-teste/
+│
+├── dist/                   # Arquivos de distribuição gerados pelo Gulp
+├── src/                    # Código-fonte do projeto
+│   ├── img/                # Imagens usadas no projeto
+│   ├── scss/               # Arquivos SCSS
+│   │   ├── components/     # Arquivos de estilização de componentes
+│   │   ├── layout/         # Estilização de elementos estáticos da página como header e footer
+│   │   ├── utils/          # Arquivos SCSS utilitários como variáveis de cor, placeholders e mixins
+│   │   ├── main.scss       # Arquivo com importações dos módulos e estilos da página inicial
+│   │   └── reset.scss      # Reinicia os estilos das tags HTML
+│   ├── ts/                 # Arquivos JavaScript e TypeScript
+│   │   ├── index.ts        # Ponto de entrada principal do TypeScript
+│   │   └── Product.ts      # Interface dos produtos
+│   ├── index.html          # Página principal do e-commerce
+├── ...                     # Outros arquivos de configuração
+├── gulpfile.js             # Configuração do Gulp
+├── package.json            # Configurações do npm e dependências do projeto
+├── README.md               # Documentação do projeto
+└── webpack.config.js       # Configuração do Webpack
+```
 
-O objetivo desse desafio é avaliar a seus conhecimentos fundamentais de front end, por isso pedimos que não utilize nenhum framework, porem caso deseje utilizar frameworks como react, é possível adicionar ao setup.
-### Obrigatório
+## Contato
 
-- HTML5 e CSS3
-- Typescript
-- Requisição a API para obter os produtos
-- Funcionalidade: Filtrar produtos por cor, tamanho e preço.
-- Funcionalidade: Adicionar produto ao carrinho.
-- Funcionalidade: Carregar mais produtos.
-- Não utilizar Bootstrap, Foundation Css, Semantic ui ou semelhantes ;
-- Responsividade
+Entre em contato através de:
 
-#### Bônus
-
-- Typescript com clean code
-- Adição de processo no gulp para otimizar imagens
-
-##### Dúvidas: [vinicius.delfino@cadastra.com](mailto:vinicius.delfino@cadastra.com?subject=Dúvida%20Vaga%20DEV%20-%20Cadastra)
+- E-mail: [joseeduardorperes@gmail.com](mailto:joseeduardorperes@gmail.com).
+- LinkedIn: [José Eduardo](https://www.linkedin.com/in/joseeduardorp/).

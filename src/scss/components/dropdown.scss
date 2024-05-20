@@ -1,0 +1,40 @@
+.dropdown {
+	width: 100%;
+
+	&__label {
+		padding: 5px 0;
+		list-style: none;
+		user-select: none;
+		cursor: pointer;
+
+		@include flex-center(space-between);
+
+		color: $gray;
+		font-size: 24px;
+		text-transform: uppercase;
+
+		&::after {
+			content: '';
+			margin-right: 10px;
+			width: 14px;
+			height: 14px;
+			border: 1px solid $gray;
+			border-top: none;
+			border-left: none;
+
+			display: block;
+
+			transform: rotate(45deg) translateY(-7px);
+		}
+	}
+
+	&[open] &__label {
+		margin-bottom: 20px;
+
+		&::after {
+			margin-right: 0;
+
+			transform: rotate(225deg) translateY(-7px);
+		}
+	}
+}

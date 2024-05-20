@@ -1,0 +1,17 @@
+.order-button {
+	background: transparent;
+	border: none;
+	display: block;
+	transition: opacity 0.3s;
+	cursor: pointer;
+
+	font-size: 22px;
+
+	&:hover {
+		opacity: 0.75;
+	}
+
+	&--selected {
+		color: $secondary-color;
+	}
+}

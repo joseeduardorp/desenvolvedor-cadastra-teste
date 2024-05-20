@@ -91,4 +91,8 @@
 			filter: brightness(0.93);
 		}
 	}
+
+	@media (min-width: 1024px) {
+		margin-top: 0;
+	}
 }

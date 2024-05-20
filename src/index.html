@@ -49,6 +49,11 @@
 
 					<ul id="dt-range-filter-list"></ul>
 				</div>
+
+				<div class="buttons-wrapper">
+					<button class="buttons-wrapper__apply-button">aplicar</button>
+					<button class="buttons-wrapper__reset-button">limpar</button>
+				</div>
 			</aside>
 
 			<!-- products -->
@@ -75,14 +80,21 @@
 
 				<div>
 					<button
+						data-sort="recent"
 						class="desktop-order-selector__order-button desktop-order-selector__order-button--selected"
 					>
 						Mais recentes
 					</button>
-					<button class="desktop-order-selector__order-button">
+					<button
+						data-sort="lowest"
+						class="desktop-order-selector__order-button"
+					>
 						Menor preço
 					</button>
-					<button class="desktop-order-selector__order-button">
+					<button
+						data-sort="highest"
+						class="desktop-order-selector__order-button"
+					>
 						Maior preço
 					</button>
 				</div>
@@ -136,11 +148,15 @@
 			</div>
 
 			<div class="modal__content">
-				<button class="order-button order-button--selected" autofocus>
+				<button
+					data-sort="recent"
+					class="order-button order-button--selected"
+					autofocus
+				>
 					Mais recente
 				</button>
-				<button class="order-button">Maior preço</button>
-				<button class="order-button">Menor preço</button>
+				<button data-sort="highest" class="order-button">Maior preço</button>
+				<button data-sort="lowest" class="order-button">Menor preço</button>
 			</div>
 		</dialog>
 	</body>

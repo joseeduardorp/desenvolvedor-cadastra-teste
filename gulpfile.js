@@ -5,6 +5,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
+const imagemin = require('gulp-imagemin');
 
 const webpackConfig = require('./webpack.config.js');
 
@@ -33,7 +34,6 @@ function clean() {
 
 function server() {
 	browserSync.init({
-		open: false, // remover
 		server: {
 			baseDir: './dist',
 		},
@@ -83,9 +83,9 @@ function html() {
 }
 
 function img() {
-	return src(paths.img.src, { encoding: false }).pipe(
-		dest(paths.dest + '/img')
-	);
+	return src(paths.img.src, { encoding: false })
+		.pipe(imagemin())
+		.pipe(dest(paths.dest + '/img'));
 }
 
 const build = series(clean, parallel(styles, scripts, html, img));
